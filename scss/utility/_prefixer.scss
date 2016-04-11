@@ -1,0 +1,9 @@
+//
+// Auto Prefixer
+//
+
+@mixin prefixer($property, $value) {
+    -moz-#{$property}: $value;
+    -webkit-#{$property}: $value;
+    #{$property}: $value;
+}

@@ -1,0 +1,26 @@
+//
+// Helper for targeting specific element states
+//
+
+// Active
+@mixin state-active {
+    &:active,
+    &:focus,
+    &:hover {
+        @content;
+    }
+}
+
+// Disabled
+@mixin state-disabled {
+    &:disabled {
+        @content;
+    }
+}
+
+// Visited
+@mixin state-visited {
+    &:visited {
+        @content;
+    }
+}

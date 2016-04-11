@@ -1,0 +1,31 @@
+// Gutter
+@mixin gutter($gutter) {
+    @if (type_of($gutter) == 'map') {
+        @each $breakpoint, $value in $gutter {
+            @include breakpoint($breakpoint) {
+                margin: {
+                    left: $value;
+                    right: $value;
+                }
+            }
+        }
+    } @else if type_of($gutter) == 'list' {
+        @each $gutter-n in $gutter {
+            $index: index($gutter, $gutter-n);
+            $breakpoint: nth($grid-breakpoints, $index);
+            $breakpoint-size: nth($breakpoint, 1);
+
+            @include breakpoint($breakpoint-size) {
+                margin: {
+                    left: $gutter-n;
+                    right: $gutter-n;
+                }
+            }
+        }
+    } @else {
+        margin: {
+            left: $gutter;
+            right: $gutter;
+        }
+    }
+}

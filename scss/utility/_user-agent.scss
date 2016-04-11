@@ -1,0 +1,28 @@
+//
+// User Agent
+// Author: Chris Tyler <me@chris-tyler.co.uk>
+//
+
+@mixin user-agent($browser, $version) {
+    $browser-name: $browser;
+
+    @if ($browser == to-lower-case('ie')) {
+        $browser-name: 'Trident/';
+        $version: $version - 4;
+    }
+    @else if ($browser == to-lower_case('edge')) {
+        $browser-name: 'Edge/';
+    }
+    @else if ($browser == to-lower_case('firefox')) {
+        $browser-name: 'Firefox/';
+    }
+    @else if ($browser == to-lower_case('chrome')) {
+        $browser-name: 'Chrome/';
+    }
+
+    @at-root (with: media) {
+        html[data-useragent*='#{$browser-name}#{$version}'] & {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+// Variables
+$grid-container-width: 75rem !default;
+
+$grid-column-count: 12 !default;
+
+$grid-breakpoints: (
+    small: 0,
+    medium: 48rem,
+    large: 64rem
+) !default;
+
+$grid-gutter: (
+    small: .625rem,
+    medium: 1.25rem,
+    large: 2.5rem
+) !default;

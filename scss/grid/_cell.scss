@@ -1,0 +1,88 @@
+// Cell
+@function cell($cell-width, $gutter-width) {
+    $width: 0;
+
+    @if (type_of($cell-width) == 'number') {
+        @if unitless($cell-width) {
+            $width: percentage($cell-width / $grid-column-count);
+        } @else {
+            $width: $cell-width;
+        }
+    } @else {
+        @error 'Cell width must be a number';
+    }
+
+    @if type_of($gutter-width) == 'map' or type_of($gutter-width) == 'number' {
+        $gutter-value: 0;
+
+        @if type_of($gutter-width) == 'map' {
+            $gutter-value: map-get($gutter-width, 1);
+        } @else if type_of($gutter-width) == 'number' {
+            $gutter-value: $gutter-width;
+        }
+
+        $width: calc(#{$width} - (#{$gutter-value} * 2));
+    }
+
+    @return $width;
+}
+
+@mixin cell-width($cell-width, $gutter: $grid-gutter) {
+    $flex-basis: auto;
+
+    @if type_of($cell-width) == 'list' {
+        @each $cell-width-n in $cell-width {
+            $index: index($cell-width, $cell-width-n);
+
+            @if type_of($gutter) == 'map' {
+                @each $breakpoint-name, $breakpoint-size in $grid-breakpoints {
+                    $index: index($grid-breakpoints, $breakpoint-name);
+                    $breakpoint-size: nth($breakpoint-name, 1);
+                    $gutter-width: map-get($gutter, $breakpoint-size);
+                    $flex-basis: cell($cell-width-n, $gutter-width);
+
+                    @include breakpoint($breakpoint-size) {
+                        @include flex-basis($flex-basis);
+                    }
+                }
+            } @else if type_of($gutter) == 'list' {
+                $breakpoint: nth($grid-breakpoints, $index);
+                $breakpoint-size: nth($breakpoint, 1);
+                $gutter-width: nth($gutter, $index);
+                $flex-basis: cell($cell-width-n, $gutter-width);
+
+                @include breakpoint($breakpoint-size) {
+                    @include flex-basis($flex-basis);
+                }
+            } @else if type_of($gutter) == 'number' {
+                $flex-basis: cell($cell-width-n, $gutter);
+                @include flex-basis($flex-basis);
+            }
+        }
+    } @else {
+        @if type_of($gutter) == 'map' {
+            @each $breakpoint in $grid-breakpoints {
+                $index: index($grid-breakpoints, $breakpoint);
+                $breakpoint-size: nth($breakpoint, 1);
+                $gutter-width: map-get($gutter, $breakpoint-size);
+                $flex-basis: cell($cell-width, $gutter-width);
+
+                @include breakpoint($breakpoint-size) {
+                    @include flex-basis($flex-basis);
+                }
+            }
+        } @else if type_of($gutter) == 'number' {
+            $flex-basis: cell($cell-width, $gutter);
+            @include flex-basis($flex-basis);
+        }
+    }
+
+    @include gutter($gutter);
+}
+
+@mixin cell($cell-width: $grid-column-count, $gutter: $grid-gutter) {
+    @include box-sizing(border-box);
+    @include flex-grow(0);
+    @include flex-shrink(0);
+    @include cell-width($cell-width, $gutter);
+}

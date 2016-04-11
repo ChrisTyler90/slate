@@ -1,0 +1,30 @@
+//
+// Mixin - Media Queries Helper
+// Influenced by Hugo Giraudel http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+//
+// Author: Chris Tyler <hello@chris-tyler.co.uk>
+//
+
+$breakpoints: (
+    small: 0,
+    medium: 48rem,
+    large: 64rem
+) !default;
+
+@mixin breakpoint($size) {
+    $width: 0;
+
+    @if map-has-key($breakpoints, $size) {
+        $width: map-get($breakpoints, $size);
+    } @else if unitless($size) > 0 {
+        $width: $size;
+    }
+
+    @if $width > 0 {
+        @media (min-width: $width) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

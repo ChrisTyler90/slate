@@ -1,0 +1,9 @@
+//
+// Reset the appearance of a list
+//
+
+@mixin reset-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
