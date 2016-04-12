@@ -1,0 +1,30 @@
+//
+// Font Face
+//
+
+@mixin font-face($font-family, $path-to-files, $file-types: (eot, woff2, woff, ttf, svg), $font-weight: null, $font-style: null) {
+    $available-fonts: null;
+
+    $font-types: (
+        eot: 'embedded-opentype',
+        otf: 'opentype',
+        ttf: 'truetype'
+    );
+
+    @font-face {
+        font-family: $font-family;
+        @each $type in $file-types {
+            $format: if(map-has_key($font-types, $type), map-get($font-types, $type), $type);
+            $available-fonts: append($available-fonts, quote($path-to-files + '.' + $type) format(quote($format)), comma);
+        }
+        src: $available-fonts;
+
+        @if ($font-weight) {
+            font-weight: $font-weight;
+        }
+
+        @if ($font-style) {
+            font-style: $font-style;
+        }
+    }
+}

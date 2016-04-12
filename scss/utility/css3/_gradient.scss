@@ -1,0 +1,9 @@
+//
+// Gradients
+//
+
+@mixin linear-gradient($value...) {
+    -moz-linear-gradient: $value;
+    -webkit-linear-gradient: $value;
+    linear-gradient: $value;
+}

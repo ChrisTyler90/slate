@@ -1,0 +1,9 @@
+//
+// Filter
+//
+
+@mixin filter($value...) {
+    -moz-filter: $value;
+    -webkit-filter: $value;
+    filter: $value;
+}

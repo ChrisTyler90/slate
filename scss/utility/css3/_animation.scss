@@ -1,0 +1,57 @@
+//
+// Animation
+//
+
+@mixin animation($value...) {
+    -moz-animation: $value;
+    -webkit-animation: $value;
+    animation: $value;
+}
+
+@mixin animation-name($value...) {
+    -moz-animation-name: $value;
+    -webkit-animation-name: $value;
+    animation-name: $value;
+}
+
+@mixin animation-duration($value...) {
+    -moz-animation-duration: $value;
+    -webkit-animation-duration: $value;
+    animation-duration: $value;
+}
+
+@mixin animation-timing-function($value...) {
+    -moz-animation-timing-function: $value;
+    -webkit-animation-timing-function: $value;
+    animation-timing-function: $value;
+}
+
+@mixin animation-delay($value...) {
+    -moz-animation-delay: $value;
+    -webkit-animation-delay: $value;
+    animation-delay: $value;
+}
+
+@mixin animation-iteration-count($value...) {
+    -moz-animation-iteration-count: $value;
+    -webkit-animation-iteration-count: $value;
+    animation-iteration-count: $value;
+}
+
+@mixin animation-direction($value...) {
+    -moz-animation-direction: $value;
+    -webkit-animation-direction: $value;
+    animation-direction: $value;
+}
+
+@mixin animation-fill-mode($value...) {
+    -moz-animation-fill-mode: $value;
+    -webkit-animation-fill-mode: $value;
+    animation-fill-mode: $value;
+}
+
+@mixin animation-play-state($value...) {
+    -moz-animation-play-state: $value;
+    -webkit-animation-play-state: $value;
+    animation-play-state: $value;
+}

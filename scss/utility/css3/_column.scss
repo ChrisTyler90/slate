@@ -1,0 +1,9 @@
+//
+// Column
+//
+
+@mixin column-count($value) {
+    -moz-column-count: $value;
+    -webkit-column-count: $value;
+    column-count: $value;
+}

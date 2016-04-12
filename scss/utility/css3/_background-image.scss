@@ -1,0 +1,9 @@
+//
+// Animation
+//
+
+@mixin background-image($value...) {
+    background-image: -moz-$value;
+    background-image: -webkit-$value;
+    background-image: $value;
+}

@@ -6,17 +6,30 @@
 // Variables
 @import 'var';
 
+// CSS3
+@import 'utility/css3/animation';
+@import 'utility/css3/appearance';
+@import 'utility/css3/background-image';
+@import 'utility/css3/border-radius';
+@import 'utility/css3/box-shadow';
+@import 'utility/css3/box-sizing';
+@import 'utility/css3/column';
+@import 'utility/css3/filter';
+@import 'utility/css3/flexbox';
+@import 'utility/css3/font-face';
+@import 'utility/css3/keyframes';
+@import 'utility/css3/placeholder';
+@import 'utility/css3/transition';
+@import 'utility/css3/transform';
+
 // Utilities
+@import 'utility/user-agent';
 @import 'utility/reset';
 @import 'utility/reset-list';
-@import 'utility/transform';
 @import 'utility/alignment';
 @import 'utility/aspect-ratio';
-@import 'utility/box-sizing';
 @import 'utility/breakpoint';
-@import 'utility/flexbox';
 @import 'utility/state';
-@import 'utility/user-agent';
 
 // Grid
 @import 'grid/cell';
