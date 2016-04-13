@@ -10,9 +10,10 @@
 }
 
 @mixin center-horizontal {
-    @include transform(translateX(-50%));
-    position: relative;
-    left: 50%;
+    margin: {
+        left: auto;
+        right: auto;
+    }
 }
 
 @mixin center-vertical {
