@@ -1,6 +1,15 @@
 //
 // User Agent
-// Author: Chris Tyler <me@chris-tyler.co.uk>
+// usage:
+// @include user-agent(ie, 10) {
+//    color: #f00;
+// }
+// @include user-agent(ie, 11) {
+//    color: #0f0;
+// }
+// @include user-agent(firefox) {
+//    color: #00f;
+// }
 //
 
 @mixin user-agent($browser, $version) {
@@ -9,14 +18,11 @@
     @if ($browser == to-lower-case('ie')) {
         $browser-name: 'Trident/';
         $version: $version - 4;
-    }
-    @else if ($browser == to-lower_case('edge')) {
+    } @else if ($browser == to-lower_case('edge')) {
         $browser-name: 'Edge/';
-    }
-    @else if ($browser == to-lower_case('firefox')) {
+    } @else if ($browser == to-lower_case('firefox')) {
         $browser-name: 'Firefox/';
-    }
-    @else if ($browser == to-lower_case('chrome')) {
+    } @else if ($browser == to-lower_case('chrome')) {
         $browser-name: 'Chrome/';
     }
 

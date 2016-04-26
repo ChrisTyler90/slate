@@ -1,4 +1,7 @@
+//
 // Gutter
+//
+
 @mixin gutter($gutter: $grid-gutter) {
     @if (type_of($gutter) == 'map') {
         @each $breakpoint, $value in $gutter {

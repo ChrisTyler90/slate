@@ -1,5 +1,12 @@
 //
 // Helper for targeting specific element states
+// usage:
+// @include state-active {
+//    color: #f00;
+// }
+// @include state-disabled {
+//    color: #aaa;
+// }
 //
 
 // Active

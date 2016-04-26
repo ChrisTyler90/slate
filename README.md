@@ -26,3 +26,6 @@ Variables for slate can be found in the `var.scss` file:
 | $grid-column-count | 12 | Maximum number of columns in a row |
 | $grid-breakpoints | (<br />&nbsp;&nbsp;&nbsp;&nbsp;small: 0,<br />&nbsp;&nbsp;&nbsp;&nbsp;medium: 48rem,<br />&nbsp;&nbsp;&nbsp;&nbsp;large: 64rem<br />) | An associative array of the size name, and it's min-width |
 | $grid-gutter | (<br />&nbsp;&nbsp;&nbsp;&nbsp;small: .625rem,<br />&nbsp;&nbsp;&nbsp;&nbsp;medium: 1.25rem,<br />&nbsp;&nbsp;&nbsp;&nbsp;large: 2.5rem<br />) | The gutter widths, for each of the `$grid-breakpoints`
+
+# Utility Helpers
+Included are many useful helpers, which can be found in the `scss/utility` folder.
