@@ -14,8 +14,10 @@
     @font-face {
         font-family: $font-family;
         @each $type in $file-types {
-            $format: if(map-has_key($font-types, $type), map-get($font-types, $type), $type);
-            $available-fonts: append($available-fonts, quote($path-to-files + '.' + $type) format(quote($format)), comma);
+            $format_string: if(map-has_key($font-types, $type), map-get($font-types, $type), $type);
+            $font_uri: url(quote($path-to-files + '.' + $type));
+            $font_format: format(quote($format_string));
+            $available-fonts: append($available-fonts, $font_uri + ' ' + $font_format, comma);
         }
         src: $available-fonts;
 
