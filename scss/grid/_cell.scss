@@ -39,8 +39,6 @@
     @if type_of($cell-width) == 'list' {
         $index: 1;
         @each $cell-width-n in $cell-width {
-            @debug $cell-width + ': ' + $cell-width-n  + ': ' + $index;
-
             @if type_of($gutter) == 'map' or type_of($gutter) == 'list' {
                 $gutter-width: null;
 
