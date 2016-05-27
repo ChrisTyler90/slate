@@ -121,6 +121,8 @@
         }
         @include flex-basis(auto);
     } @else {
+        @include flex-grow(nth($value, 1));
+
         @if length($value) >= 2 {
             @include flex-shrink(nth($value, 2));
         }
