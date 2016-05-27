@@ -5,88 +5,191 @@
 @mixin display-flex {
     display: -webkit-flex;
     display: flex;
+
+    @if $slate-legacy-flexbox {
+        display: -ms-flexbox;
+    }
 }
 
 @mixin flex-wrap($value) {
     -moz-flex-wrap: $value;
     -webkit-flex-wrap: $value;
     flex-wrap: $value;
-}
 
-@mixin flex($value) {
-    -moz-flex: $value;
-    -webkit-flex: $value;
-    flex: $value;
+    @if $slate-legacy-flexbox {
+        -ms-flex-wrap: $value;
+    }
 }
 
 @mixin flex-direction($value) {
     -moz-flex-direction: $value;
     -webkit-flex-direction: $value;
     flex-direction: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-direction: $value;
+    }
 }
 
 @mixin flex-wrap($value) {
     -moz-flex-wrap: $value;
     -webkit-flex-wrap: $value;
     flex-wrap: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-wrap: $value;
+    }
 }
 
 @mixin flex-flow($value...) {
     -moz-flex-flow: $value;
     -webkit-flex-flow: $value;
     flex-flow: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-flow: $value;
+    }
 }
 
 @mixin order($value) {
     -moz-order: $value;
     -webkit-order: $value;
     order: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-order: $value;
+    }
 }
 
 @mixin flex-grow($value) {
     -moz-flex-grow: $value;
     -webkit-flex-grow: $value;
     flex-grow: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-positive: $value;
+    }
 }
 
 @mixin flex-shrink($value) {
     -moz-flex-shrink: $value;
     -webkit-flex-shrink: $value;
     flex-shrink: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-negative: $value;
+    }
 }
 
 @mixin flex-basis($value) {
     -moz-flex-basis: $value;
     -webkit-flex-basis: $value;
     flex-basis: $value;
+
+    @if $slate-legacy-flexbox {
+        -ms-flex-preferred-size: auto;
+
+        @include user-agent(ie, 10) {
+            min-width: 0;
+            width: $value;
+        }
+
+        @include user-agent(ie, 11) {
+            min-width: 0;
+            width: $value;
+        }
+    }
 }
 
 @mixin flex($value) {
-    -moz-flex: ($value);
-    -webkit-flex: ($value);
-    flex: ($value);
+    @if length($value) == 1 {
+        @if $value == 'none' or $value == 'initial' or $value == 'auto' {
+            @if $value == 'auto' {
+                @include flex-grow(1);
+            } @else {
+                @include flex-grow(0);
+            }
+
+            @if $value == 'none' {
+                @include flex-shrink(0);
+            } @else {
+                @include flex-shrink(1);
+            }
+        } @else {
+            @include flex-grow($value);
+            @include flex-shrink(0);
+        }
+        @include flex-basis(auto);
+    } @else {
+        @if length($value) >= 2 {
+            @include flex-shrink(nth($value, 2));
+        }
+        @if length($value) == 3 {
+            @include flex-basis(nth($value, 3));
+        }
+    }
 }
 
 @mixin justify-content($value) {
     -moz-justify-content: $value;
     -webkit-justify-content: $value;
     justify-content: $value;
+
+    @if $slate-legacy-flexbox {
+        @if $slate-legacy-flexbox {
+            $value: str-replace($value, 'flex-', '');
+
+            @if $value == 'space-between' {
+                $value: 'justify';
+            } @else if $value == 'space-around' {
+                $value: 'distribute';
+            }
+
+            -ms-flex-pack: $value;
+        }
+    }
 }
 
 @mixin align-content($value) {
     -moz-align-content: $value;
     -webkit-align-content: $value;
     align-content: $value;
+
+    @if $slate-legacy-flexbox {
+        @if $slate-legacy-flexbox {
+            $value: str-replace($value, 'flex-', '');
+
+            @if $value == 'space-between' {
+                $value: 'justify';
+            } @else if $value == 'space-around' {
+                $value: 'distribute';
+            }
+
+            -ms-flex-align: $value;
+        }
+    }
 }
 
 @mixin align-items($value) {
     -moz-align-items: $value;
     -webkit-align-items: $value;
     align-items: $value;
+
+    @if $slate-legacy-flexbox {
+        $value: str-replace($value, 'flex-', '');
+
+        -ms-flex-align: $value;
+    }
 }
 
 @mixin align-self($value) {
     -moz-align-self: $value;
     -webkit-align-self: $value;
     align-self: $value;
+
+    @if $slate-legacy-flexbox {
+        $value: str-replace($value, 'flex-', '');
+
+        -ms-flex-item-align: $value;
+    }
 }
