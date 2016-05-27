@@ -1,16 +1,18 @@
 // Variables
-$grid-container-width: 75rem !default;
+$slate-container-width: 75rem !default;
 
-$grid-column-count: 12 !default;
+$slate-column-count: 12 !default;
 
-$grid-breakpoints: (
+$slate-breakpoint: (
     small: 0,
     medium: 48rem,
     large: 64rem
 ) !default;
 
-$grid-gutter: (
+$slate-gutter: (
     small: .625rem,
     medium: .9375rem,
     large: 2.5rem
 ) !default;
+
+$slate-legacy-flexbox: true !default;

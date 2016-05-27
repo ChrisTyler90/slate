@@ -6,8 +6,8 @@
 @mixin breakpoint($size) {
     $width: 0;
 
-    @if map-has-key($grid-breakpoints, $size) {
-        $width: map-get($grid-breakpoints, $size);
+    @if map-has-key($slate-breakpoint, $size) {
+        $width: map-get($slate-breakpoint, $size);
     } @else if unitless($size) > 0 {
         $width: $size;
     }

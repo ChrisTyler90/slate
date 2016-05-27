@@ -2,14 +2,14 @@
 // Row
 //
 
-@mixin row($nested: true, $gutter: $grid-gutter, $center: false) {
+@mixin row($nested: true, $gutter: $slate-gutter, $center: false) {
     @include box-sizing(border-box);
     @include display-flex;
     @include flex-flow(row wrap);
 
     @if $center {
         @include center-horizontal;
-        max-width: $grid-container-width;
+        max-width: $slate-container-width;
     } @else if ($nested) {
         @if type_of($gutter) == 'map' {
             @each $breakpoint, $value in $gutter {

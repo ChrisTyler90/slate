@@ -7,7 +7,7 @@
 
     @if (type_of($cell-width) == 'number') {
         @if unitless($cell-width) {
-            $width: percentage($cell-width / $grid-column-count);
+            $width: percentage($cell-width / $slate-column-count);
         } @else {
             $width: $cell-width;
         }
@@ -33,7 +33,7 @@
     @return $width;
 }
 
-@mixin cell-width($cell-width, $gutter: $grid-gutter) {
+@mixin cell-width($cell-width, $gutter: $slate-gutter) {
     $flex-basis: auto;
 
     @if type_of($cell-width) == 'list' {
@@ -42,7 +42,7 @@
             @if type_of($gutter) == 'map' or type_of($gutter) == 'list' {
                 $gutter-width: null;
 
-                $breakpoint: nth($grid-breakpoints, $index);
+                $breakpoint: nth($slate-breakpoint, $index);
                 $breakpoint-size: nth($breakpoint, 1);
 
                 @if type_of($gutter) == 'map' {
@@ -64,8 +64,8 @@
         }
     } @else {
         @if type_of($gutter) == 'map' {
-            @each $breakpoint in $grid-breakpoints {
-                $index: index($grid-breakpoints, $breakpoint);
+            @each $breakpoint in $slate-breakpoint {
+                $index: index($slate-breakpoint, $breakpoint);
                 $breakpoint-size: nth($breakpoint, 1);
                 $gutter-width: map-get($gutter, $breakpoint-size);
                 $flex-basis: cell-width($cell-width, $gutter-width);
@@ -83,7 +83,7 @@
     @include gutter($gutter);
 }
 
-@mixin cell($cell-width: $grid-column-count, $gutter: $grid-gutter) {
+@mixin cell($cell-width: $slate-column-count, $gutter: $slate-gutter) {
     @include box-sizing(border-box);
     @include flex-grow(0);
     @include flex-shrink(0);
